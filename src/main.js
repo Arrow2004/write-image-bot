@@ -20,6 +20,12 @@ bot.command("start", (ctx) => {
     Foydalanuvchi nomi: ${ctx.chat.username}
     Jami a'zolar soni: ${chats.length} `
     );
+    console.log(`Salom
+    Botga yangi a'zo qo'shildi
+    Foydalanuvchi ismi: ${ctx.chat.first_name}
+    Foydalanuvchi idsi: ${ctx.chat.id}
+    Foydalanuvchi nomi: ${ctx.chat.username}
+    Jami a'zolar soni: ${chats.length} `);
   }
 });
 bot.on("text", (ctx) => {

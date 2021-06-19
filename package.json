@@ -4,7 +4,8 @@
   "description": "This is image edit bot. And this bot created with telegraf js",
   "main": "main.js",
   "scripts": {
-    "start": "nodemon ./src/main.js",
+    "start": "node ./src/main.js",
+    "start:dev": "nodemon ./src/main.js",
     "test": "test"
   },
   "engines": {
