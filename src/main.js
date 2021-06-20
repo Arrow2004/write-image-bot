@@ -9,24 +9,6 @@ bot.command("start", (ctx) => {
   ctx.reply(
     "Assalomu alaykum. Botimga xush  kelibsiz!!! Botda hozircha bitta tabrik rasm bor! \n Kimnidur tug'ilgan kuni bilan tabriklamoqchi bo'lsangiz, menga uning ismini yuboring"
   );
-  if (chats.indexOf(ctx.chat.id) != -1) {
-    chats.push(ctx.chat.id);
-    ctx.telegram.sendMessage(
-      process.env.first_admin_id,
-      `Salom
-    Botga yangi a'zo qo'shildi
-    Foydalanuvchi ismi: ${ctx.chat.first_name}
-    Foydalanuvchi idsi: ${ctx.chat.id}
-    Foydalanuvchi nomi: ${ctx.chat.username}
-    Jami a'zolar soni: ${chats.length} `
-    );
-    console.log(`Salom
-    Botga yangi a'zo qo'shildi
-    Foydalanuvchi ismi: ${ctx.chat.first_name}
-    Foydalanuvchi idsi: ${ctx.chat.id}
-    Foydalanuvchi nomi: ${ctx.chat.username}
-    Jami a'zolar soni: ${chats.length} `);
-  }
 });
 bot.on("text", (ctx) => {
   text = ctx.message.text;
