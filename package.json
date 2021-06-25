@@ -23,7 +23,7 @@
     "compression": "^1.7.4",
     "dotenv": "^10.0.0",
     "jimp": "^0.16.1",
-    "telegraf": "^4.3.0"
+    "telegraf": "^3.38.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
