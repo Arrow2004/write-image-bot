@@ -3,6 +3,7 @@ const Extra = require("telegraf/extra");
 const Markup = require("telegraf/markup");
 const dotenv = require("dotenv");
 const Jimp = require("jimp");
+const fs = require("fs");
 dotenv.config();
 const bot = new Telegraf(process.env.token);
 var users = { usersInfo: [], ids: [] };
@@ -51,7 +52,7 @@ bot.on("text", async (ctx) => {
     await ctx.replyWithMediaGroup([
       {
         media: "http://happybirthdayname.com/imgbig/name_584854.jpg",
-        caption: "From URL",
+        caption: "Quyidagi rasmlardan birini tanlang!!!",
         type: "photo",
       },
       {
@@ -70,7 +71,7 @@ bot.on("text", async (ctx) => {
     );
   }
 });
-bot.action("first_image", (ctx) => {
+bot.action("first_image", async (ctx) => {
   async function writeImage() {
     let image = await Jimp.read(
       `http://happybirthdayname.com/imgbig/name_584854.jpg`
@@ -93,9 +94,14 @@ bot.action("first_image", (ctx) => {
       textHight
     );
     await image.write(`src/images/${id}.jpg`);
-    ctx.reply("Iltimos!!! \nKuting rasm tayyorlanmoqda...");
-    ctx.replyWithPhoto({ source: `src/images/${id}.jpg` });
+    await ctx.reply("Iltimos!!! \nKuting rasm tayyorlanmoqda...");
+    await ctx.replyWithPhoto({ source: `src/images/${id}.jpg` });
+    fs.unlink(`src/images/${id}.jpg`, function (err) {
+      if (err) return console.log(err);
+      console.log("file deleted successfully");
+    });
   }
+  writeImage();
 });
 bot.action("second_image", (ctx) => {
   async function writeImage() {
@@ -124,8 +130,12 @@ bot.action("second_image", (ctx) => {
       textHight
     );
     await image.write(`src/images/${id}.jpg`);
-    ctx.reply("Iltimos!!! \nKuting rasm tayyorlanmoqda...");
-    ctx.replyWithPhoto({ source: `src/images/${id}.jpg` });
+    await ctx.reply("Iltimos!!! \nKuting rasm tayyorlanmoqda...");
+    await ctx.replyWithPhoto({ source: `src/images/${id}.jpg` });
+    await fs.unlink(`src/images/${id}.jpg`, function (err) {
+      if (err) return console.log(err);
+      console.log("file deleted successfully");
+    });
   }
   writeImage();
 });
