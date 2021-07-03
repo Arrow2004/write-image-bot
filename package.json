@@ -23,6 +23,8 @@
     "compression": "^1.7.4",
     "dotenv": "^10.0.0",
     "jimp": "^0.16.1",
+    "mongoose": "^5.12.15",
+    "node-fetch": "^2.6.1",
     "telegraf": "^3.38.0"
   },
   "devDependencies": {

@@ -1,28 +1,32 @@
 const Jimp = require("jimp");
 const fs = require("fs");
-Jimp.read(`http://happybirthdayname.com/imgbig/name_584842.jpg`)
-  .then((image) => {
-    Jimp.loadFont(Jimp.FONT_SANS_64_BLACK).then((font) => {
-      var w = image.bitmap.width;
-      var h = image.bitmap.height;
-      let text = "Abdurashid";
-      var textWidth = Jimp.measureText(font, text);
-      var textHight = Jimp.measureTextHeight(font, text);
-      image.print(
-        font,
-        80,
-        120,
-        {
-          text: text,
-          //alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
-          //alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
-        },
-        textWidth,
-        textHight
-      );
-      image.write(`src/images/871447523-2.jpg`);
-    });
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+async function writeImage(text) {
+  let id = 212121;
+  let image = await Jimp.read(
+    `http://happybirthdayname.com/imgbig/name_584854.jpg`
+  );
+  const font = await Jimp.loadFont("src/fonts/Benne-Regular.ttf.fnt");
+  coordY = 190;
+  if (text.includes(" ")) {
+    coordY = 240;
+  }
+  var w = image.bitmap.width;
+  var h = image.bitmap.height;
+  var textWidth = Jimp.measureText(font, text);
+  var textHight = Jimp.measureTextHeight(font, text);
+  image.print(
+    font,
+    w / 2 - textWidth / 2,
+    coordY,
+    {
+      text: text + "!",
+      alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+      //alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+    },
+    textWidth,
+    textHight
+  );
+  await image.write(`src/images/${id}.jpg`);
+  console.log("OK");
+}
+writeImage("Akbar Coder");
